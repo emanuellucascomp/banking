@@ -1,11 +1,13 @@
 package br.com.embole.banking.application.service;
 
-import br.com.embole.banking.adapter.out.CustomerRepository;
+import br.com.embole.banking.adapter.out.persistence.CustomerRepository;
 import br.com.embole.banking.application.port.CustomerUseCase;
 import br.com.embole.banking.application.port.in.request.CustomerRequest;
 import br.com.embole.banking.application.port.in.response.CustomerResponse;
 import br.com.embole.banking.domain.Customer;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -26,6 +28,19 @@ public class CustomerService implements CustomerUseCase {
                 .id(savedCustomer.getId())
                 .accountNumber(savedCustomer.getAccountNumber())
                 .name(savedCustomer.getName())
+                .balance(savedCustomer.getBalance())
                 .build();
+    }
+
+    @Override
+    public Page<CustomerResponse> listByCustomerName(String customerName, Pageable pagination) {
+        Page<Customer> customersByName = customerRepository.findByNameContaining(customerName, pagination);
+        return CustomerResponse.fromEntityToResponse(customersByName);
+    }
+
+    @Override
+    public Page<CustomerResponse> listCustomers(Pageable pagination) {
+        Page<Customer> customersByPage = customerRepository.findAll(pagination);
+        return CustomerResponse.fromEntityToResponse(customersByPage);
     }
 }
