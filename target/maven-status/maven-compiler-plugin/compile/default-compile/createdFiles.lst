@@ -1,0 +1,3 @@
+br/com/embole/banking/domain/Customer.class
+br/com/embole/banking/BankingApplication.class
+br/com/embole/banking/domain/Transfer.class
