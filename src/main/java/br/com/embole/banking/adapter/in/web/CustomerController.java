@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/customer")
@@ -41,5 +42,11 @@ public class CustomerController {
             return customerUseCase.listByCustomerName(customerName, pagination);
         }
         return customerUseCase.listCustomers(pagination);
+    }
+
+    @GetMapping("/{accountNumber}")
+    public ResponseEntity<CustomerResponse> getUserByAccountNumber(@PathVariable String accountNumber){
+        Optional<CustomerResponse> userByAccountNumber = customerUseCase.getUserByAccountNumber(accountNumber);
+        return userByAccountNumber.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 }

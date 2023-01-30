@@ -10,6 +10,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class CustomerService implements CustomerUseCase {
@@ -42,5 +44,22 @@ public class CustomerService implements CustomerUseCase {
     public Page<CustomerResponse> listCustomers(Pageable pagination) {
         Page<Customer> customersByPage = customerRepository.findAll(pagination);
         return CustomerResponse.fromEntityToResponse(customersByPage);
+    }
+
+    @Override
+    public Optional<CustomerResponse> getUserByAccountNumber(String accountNumber) {
+        Optional<Customer> savedCustomer = customerRepository.findByAccountNumber(accountNumber);
+        if(savedCustomer.isEmpty()){
+            return Optional.empty();
+        }
+
+        CustomerResponse customer = CustomerResponse.builder()
+                .id(savedCustomer.get().getId())
+                .accountNumber(savedCustomer.get().getAccountNumber())
+                .name(savedCustomer.get().getName())
+                .balance(savedCustomer.get().getBalance())
+                .build();
+
+        return Optional.of(customer);
     }
 }
