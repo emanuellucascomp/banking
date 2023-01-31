@@ -17,8 +17,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class IllegalArgumentHandler {
 
-    private final MessageSource messageSource;
-
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(IllegalArgumentException.class)
     public List<ValidationResponse> handle(IllegalArgumentException exception){
