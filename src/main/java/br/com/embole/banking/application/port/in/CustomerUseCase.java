@@ -1,4 +1,4 @@
-package br.com.embole.banking.application.port;
+package br.com.embole.banking.application.port.in;
 
 import br.com.embole.banking.application.port.in.request.CustomerRequest;
 import br.com.embole.banking.application.port.in.response.CustomerResponse;

@@ -1,0 +1,2 @@
+INSERT INTO CUSTOMER(id, name, account_number, balance) VALUES ('c2d106d3-4938-4b43-b5f7-87d3b4720196', 'Emanuel Lucas de Sousa e Silva', '0000001', 1000);
+INSERT INTO CUSTOMER(id, name, account_number, balance) VALUES ('a092a267-1eb5-4d30-8d22-250706434dd3', 'Karine Souza de Moura', '0000002', 1000);

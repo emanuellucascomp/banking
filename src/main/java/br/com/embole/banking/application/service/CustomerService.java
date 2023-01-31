@@ -1,7 +1,7 @@
 package br.com.embole.banking.application.service;
 
 import br.com.embole.banking.adapter.out.persistence.CustomerRepository;
-import br.com.embole.banking.application.port.CustomerUseCase;
+import br.com.embole.banking.application.port.in.CustomerUseCase;
 import br.com.embole.banking.application.port.in.request.CustomerRequest;
 import br.com.embole.banking.application.port.in.response.CustomerResponse;
 import br.com.embole.banking.domain.Customer;

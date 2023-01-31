@@ -21,6 +21,8 @@ public class Transfer {
     private UUID id;
     private BigDecimal transferAmount;
     private LocalDateTime createdDate = LocalDateTime.now();
+    @Enumerated(EnumType.STRING)
+    private Type transferType;
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;

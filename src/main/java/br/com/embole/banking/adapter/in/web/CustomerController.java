@@ -1,6 +1,6 @@
 package br.com.embole.banking.adapter.in.web;
 
-import br.com.embole.banking.application.port.CustomerUseCase;
+import br.com.embole.banking.application.port.in.CustomerUseCase;
 import br.com.embole.banking.application.port.in.request.CustomerRequest;
 import br.com.embole.banking.application.port.in.response.CustomerResponse;
 import jakarta.validation.Valid;
